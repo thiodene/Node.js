@@ -7,18 +7,9 @@
 function getCount(objects) {
     let count = 0;
     for (var key in objects) {
-        //const [firstkey, secondkey] = obj[Object.keys(obj);
-        //if (obj[Object.keys(obj)[0]] == obj[Object.keys(obj)[1]])
         if (objects[key].x == objects[key].y)
             count++;
-
-        //for (var i in obj) {
-        //    count++;
-        //}
     }
-    //return obj.x;
-    //return obj[Object.keys(obj)[0]];
-    //return Object.keys(obj)[1];
     return count;
 }
 
