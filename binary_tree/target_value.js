@@ -1,19 +1,30 @@
-    //TARGET VALUE---------------------------------------------------------------------------------------------
-    this.nodesum = [] ;
-    this.nodeSummation = function(root,target)
+    //PATH SUM---------------------------------------------------------------------------------------------
+    this.pathSum = function(root,target)
     {
-        let rootval ;
+        let newtarget ;
+        let nodeval = 0 ;
         if (root === null)
             return;
 
-        rootval = root.data;
+        nodeval = root.data;
+        newtarget = target - nodeval;
 
-        this.nodeSummation(root.left,target);
-        this.nodeSummation(root.right,target);
+        console.log(newtarget);
 
-        if(this.nodesum.indexOf(target))
+        if(newtarget == 0 && root.left === null && root.right === null)
             return true;
-        else
-            return false;
 
+        if(root.left)
+        {
+            this.pathSum(root.left,newtarget);
+        }
+
+        if(root.right)
+        {
+            this.pathSum(root.right,newtarget);
+        }
+
+        return false;
+        //return newtarget;
     }
+
