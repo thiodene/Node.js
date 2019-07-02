@@ -3,6 +3,7 @@
     {
         let newtarget ;
         let nodeval = 0 ;
+        let ans = false ;
         if (root === null)
             return;
 
@@ -11,20 +12,24 @@
 
         console.log(newtarget);
 
-        if(newtarget == 0 && root.left === null && root.right === null)
+        //if(newtarget == 0 && root.left === null && root.right === null)
+        if(newtarget == 0 && !root.left && !root.right)
             return true;
 
         if(root.left)
         {
-            this.pathSum(root.left,newtarget);
+            ans = ans || this.pathSum(root.left,newtarget);
         }
 
         if(root.right)
         {
-            this.pathSum(root.right,newtarget);
+            ans = ans || this.pathSum(root.right,newtarget);
         }
 
-        return false;
+        console.log(newtarget);
+        return ans;
+        //return false;
         //return newtarget;
     }
+
 
