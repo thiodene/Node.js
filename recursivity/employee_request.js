@@ -7,11 +7,29 @@ function moveEmployee(requestList){
   let name = "";
   let requestMoversFrom = [];
   let permutation = [];
-  var checkNextEmployee = function(name,origin){
-    let nameList = [];
-    if(requestList){
-      nameList.push(name);
+  var checkNextEmployee = function(nameList,origin){
+    let to_bldng ;
+    let from_bldng ;
+
+    // Get the to_building and from_building value for this employee
+    let moverList = requestList.filter(function(staff){ return staff.employee_name == nameList[nameList.length]; });
+    console.log(moverList[0]);
+    if (moverList[0])
+    {
+      from_bldng = moverList[0].from_building ;
+      to_bldng = moverList[0].to_building ;
+      movername = moverList[0].employee_name ;
+
+      //nameList.push(name);
+      // Look for the possible from movers of that to_bldng of that employee
+      if (from_bldng != origin) {
+        nameList.push(movername);
+        ckeckNextEmployee(nameList,origin);
+      }
+      //else
+        //nameList.push(name);
     }
+
     return nameList;
   }
 
@@ -28,7 +46,7 @@ function moveEmployee(requestList){
 
     for (let newkey in requestMoversFrom){
 
-      permutation.push(checkNextEmployee(requestMoversFrom[newkey].employee_name,requestMoversFrom[newkey].from_building));
+      permutation.push(checkNextEmployee([requestMoversFrom[newkey].employee_name],requestMoversFrom[newkey].from_building));
       console.log(requestMoversFrom[newkey].employee_name);
     }
 
