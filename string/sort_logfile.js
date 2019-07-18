@@ -7,6 +7,14 @@ function sortLogfile(logFileSize, logLines)
   // Get all the arrays in the same order as in the log file
   // Clean up the spacing of the Log File
   let newLogLines = logLines  ;
+  let newArrayLogLines = [];
+
+  let numArrayLogLines = [];
+  let charArrayLogLines = [];
+  let arrResult = [];
+
+  let record = '';
+  let arrRecord = [];
   newLogLines = newLogLines.replace(/\s\s+/g, ' ');
   newLogLines = newLogLines.trim();
 
@@ -19,19 +27,50 @@ function sortLogfile(logFileSize, logLines)
   newLogLines = newLogLines.replace("]","");
 
   // Explode the records by ","
-  let arrLoglines = newLogLines.split(",");
+  let arrLogLines = newLogLines.split(",");
 
   for (let key in arrLogLines)
   {
 
     // Split Element by space to check them individually
-    newArrayLogLines
+    // Array of objects where the first record is a key rest is value
+    //replace the first space by :
+    record = arrLogLines[key].replace(" ",":");
 
+    // now split with : and create the object
+    arrRecord = record.split(":");
 
+    // Now push this record into the array
+    newArrayLogLines.push({"Key":arrRecord[0],"Value":arrRecord[1]});
+
+    // Go through the same records and separate the numeric ones to the alpha ones
+    if (isNaN(Number(arrRecord[1].split(" ")[0])))
+      charArrayLogLines.push({"Key":arrRecord[0], "Value":arrRecord[1]});
+    else
+      numArrayLogLines.push({"Key":arrRecord[0], "Value":arrRecord[1]});
+  }
+
+    // Now sort the Alpha and numeric arrays of objects
+  //numArrayLogLines.sort(function(a,b){ return a.Value - b.Value; });
+  numArrayLogLines.sort(function(a,b){ return a.Value.localeCompare(b.Value); });
+
+  charArrayLogLines.sort(function(a,b){ return a.Value.localeCompare(b.Value); });
+  // Add the character data
+  for (let charkey in charArrayLogLines){
+    arrResult.push(charArrayLogLines[charkey].Key + " " + charArrayLogLines[charkey].Value) ;
+  }
+  // Add the numeric data
+  for (let numkey in numArrayLogLines){
+    arrResult.push(numArrayLogLines[numkey].Key + " " + numArrayLogLines[numkey].Value) ;
   }
 
 
-  return newLogLines;
+  //return newLogLines;
+  //return newArrayLogLines;
+  //return numArrayLogLines;
+  //return charArrayLogLines;
+
+  return arrResult;
 }
 
 
@@ -58,3 +97,4 @@ function main(){
 // Execute main
 
 main();
+
