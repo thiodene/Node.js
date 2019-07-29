@@ -10,7 +10,13 @@ function findElement(numberArray,k)
     return b - a
   });
 
-  return numberArray[0];
+  var filterArray = numberArray.filter(function(element){
+    return element <= k;
+  });
+
+  //return numberArray[0];
+  //return filterArray;
+  return filterArray[0];
 }
 
 
@@ -19,9 +25,13 @@ function main()
 {
 
   var numberArray = [2,4,6,7,9,13,14,16,17,18,19,20,21,24,25,23,22,15,12,11,10,8,5,3,1];
-  var k = 1;
+  var k = 17;
 
   console.log(findElement(numberArray,k));
+
+
+  // Filter the value to get the wanted element
+
 
 
 }
@@ -31,3 +41,4 @@ function main()
 // MAIN-------------------------------------------------------------------------------
 
 main();
+
