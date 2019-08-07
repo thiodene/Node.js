@@ -10,11 +10,6 @@ function separateWords(phrase,words)
   let wordList;
   let wordFromLetter = "";
 
-  // First sort the list of words from largest to smallest
-  //words.sort(function(a,b){
-    //return b.length - a.length;
-  //});
-
   // Now go through the phrase char by char and based on the letters check if the word is not already in the group of words
   while (wordIter <= testPhrase.length - 1)
   {
@@ -39,7 +34,6 @@ function separateWords(phrase,words)
 
   console.log(wordRegister);
 
-
   // Buidld a new matrix with only the zero elements and build the word from them
   let wordFull = wordRegister.filter(function(element){
     return element.fromPosition == 0;
@@ -49,23 +43,18 @@ function separateWords(phrase,words)
   let completePhrase = wordFull.length;
   let m;
   let n;
-  // Do a while loop adding element and remvoving the ones that cannot be paired goiung forward
-  //while (wordRegister.length > completePhrase)
-  //{
-    for(m=0;m<=wordFull.length - 1;m++)
+  for(m=0;m<=wordFull.length - 1;m++)
+  {
+    for(n=0;n<=wordRegister.length - 1;n++)
     {
-      for(n=0;n<=wordRegister.length - 1;n++)
+      if (wordFull[m].toPosition == wordRegister[n].fromPosition)
       {
-        if (wordFull[m].toPosition == wordRegister[n].fromPosition)
-        {
-           wordFull[m].toPosition = wordRegister[n].toPosition;
-           wordFull[m].Word += " " + wordRegister[n].Word;
-        }
+         wordFull[m].toPosition = wordRegister[n].toPosition;
+         wordFull[m].Word += " " + wordRegister[n].Word;
       }
-
     }
 
-  //}
+  }
 
   //wordList = findWord(words,phrase.substr(0,1));
 
@@ -89,58 +78,6 @@ function findWord(words,letter)
   return selection;
 
 }
-
-
-  // Buidld a new matrix with only the zero elements and build the word from them
-  let wordFull = wordRegister.filter(function(element){
-    return element.fromPosition == 0;
-  });
-
-  // The end of the word contruction has to be equal to the number of words starting with 0
-  let completePhrase = wordFull.length;
-  let m;
-  let n;
-  // Do a while loop adding element and remvoving the ones that cannot be paired goiung forward
-  //while (wordRegister.length > completePhrase)
-  //{
-    for(m=0;m<=wordFull.length - 1;m++)
-    {
-      for(n=0;n<=wordRegister.length - 1;n++)
-      {
-        if (wordFull[m].toPosition == wordRegister[n].fromPosition)
-        {
-           wordFull[m].toPosition = wordRegister[n].toPosition;
-           wordFull[m].Word += " " + wordRegister[n].Word;
-        }
-      }
-
-    }
-
-  //}
-
-  //wordList = findWord(words,phrase.substr(0,1));
-
-  //return wordRegister;
-  //console.log(wordRegister);
-  return wordFull;
-  //return wordList;
-  //return words;
-
-}
-
-
- // Find words beginning from a letter and return
-function findWord(words,letter)
-{
-  let selection = [];
-  selection = words.filter(function(element){
-    return element.substr(0,1) == letter;
-  });
-
-  return selection;
-
-}
-
 
 // Build the function main
 function main()
