@@ -54,19 +54,6 @@ function separateWords(phrase,words)
 
   }
 
-  
-  
-  // Do a while loop adding element and remvoving the ones that cannot be paired goiung forward
-  while (wordRegister.length > 1)
-  {
-    for(m=0;m<=wordRegister.length - 1;m++)
-    {
-
-
-    }
-
-  }
-
   //wordList = findWord(words,phrase.substr(0,1));
 
   return wordRegister;
