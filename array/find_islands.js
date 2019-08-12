@@ -3,7 +3,7 @@
 function registerIslands(island)
 {
 
-
+  // Register each island position as object
 
 
 
@@ -28,3 +28,4 @@ function main()
 // MAIN---------------------------------------------------------------------------------------
 
 main();
+
