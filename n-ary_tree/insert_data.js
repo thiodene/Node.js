@@ -69,11 +69,11 @@ function main(){
   root = tree.insert(root,12,[2,7,4]);
   console.log(root);
   root = tree.insert(root, 2, [5,6,7,8]);
+  console.log(root);
+  root = tree.insert(root, 7, [25,17]);
+  console.log(root);
+  root = tree.insert(root,4, [9,10,12,15]);
   console.log(JSON.stringify(root));
-  //root = tree.insert(root, 2, [25,17]);
-  //console.log(root);
-  //root = tree.insert(root, 40);
-  //console.log(root);
 
   //console.log(tree.maxDepth(root));
 }
@@ -81,4 +81,5 @@ function main(){
 // MAIN-------------------------------------------------------------------------------------------------------------
 
 main();
+
 
