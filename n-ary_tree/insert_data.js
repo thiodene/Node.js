@@ -1,4 +1,5 @@
 'use strict';
+
 // Start of function Node
 function Node(data,children) {
   this.data = data;
@@ -11,7 +12,6 @@ function NarySearchTree() {
   this.insert = function(root, data, children) {
     if (root === null) {
       this.root = new Node(data,children);
-      //console.log(this.root);
       return this.root;
     }
 
@@ -19,40 +19,34 @@ function NarySearchTree() {
     {
       for(let i=0;i<=children.length - 1;i++)
       {
+        // Create a new child Node for Root
+        root.children[i] = new Node(children[i],[]);
+      }
+      return this.root;
+    }
+    else
+    {
 
-        if (root.children[i]) {
-          //console.log(root.children[i].data)
-          this.insert(root.children[i],root.children[i],[]);
-        } else {
-          root.children[i] = new Node(children[i],[]);
+      // Look for which Child has same data number
+      for (let m=0;m<=root.children.length - 1;m++)
+      {
+        console.log(root.children.length);
+        if (root.children[m].data == data)
+        {
+          console.log(root.children[m].children.length);
+          for(let n=0;n<= children.length - 1;n++)
+          {
+            // Create a child node for this data
+            root.children[m].children[n] = new Node(children[n],[]);
+          }
+           //If the element to alter has been found return the new root
+          return this.root;
         }
 
       }
     }
-    else
-    {
-      //console.log("Not Root");
-      //console.log(data);
-      // Look for which Child has same data number
-      root.children.forEach(function (element){
-        //console.log(element);
-        if (element.data == data)
-        {
-          //console.log(children.length);
-          for(let j=0;j<=children.length - 1;j++)
-          {
-            //console.log(j);
-            if (element.children[j]) {
-              //console.log(element.children[j].data)
-              this.insert(element.children[j],element.children[j],[]);
-            } else {
-              element.children[j] = new Node(children[j],[]);
-            }
 
-          }
-        }
-      });
-    }
+
       return this.root;
   };
 
