@@ -1,95 +1,127 @@
 'use strict';
 
 // Start of function Node
-function Node(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
+function Node(data,children) {
+  this.data = data;
+  this.children = children;
 }; // End of function Node
 
-// Start of function BinarySearchTree
-function BinarySearchTree() {
-    this.insert = function(root, data) {
-        if (root === null) {
-            this.root = new Node(data);
 
-            return this.root;
-        }
-
-        if (data <= root.data) {
-            if (root.left) {
-                this.insert(root.left, data);
-            } else {
-                root.left = new Node(data);
-            }
-        } else {
-            if (root.right) {
-                this.insert(root.right, data);
-            } else {
-                root.right = new Node(data);
-            }
-        }
-
-        return this.root;
-    };
-    //SUBTREE AVERAGE---------------------------------------------------------------------------------------------
-    this.average = 0;
-    this.node = null;
-    // Start Node average calculation
-    this.nodeAverage = function(root){
-       let rootval = 0;
-       let leftval = 0;
-       let rightval = 0;
-       let averageval = 0;
-       if (root === null)
-            return;
-
-       rootval = root.data;
-       //console.log(rootval);
-       if (root.left)
-           leftval = root.left.data;
-       if (root.right)
-           rightval = root.right.data;
-
-       averageval = (rootval+leftval+rightval)/3;
-       //console.log(averageval);
-
-       if(this.average < averageval)
-       {
-           this.average = averageval;
-           this.node = rootval;
-           //console.log(this.node);
-       }
-
-      this.nodeAverage(root.left);
-      this.nodeAverage(root.right);
-
-      return this.node;
-      //return this.average;
+// Start of function NarySearchTree
+function NarySearchTree() {
+  this.insert = function(root, data, children) {
+    if (root === null) {
+      this.root = new Node(data,children);
+      return this.root;
     }
 
+    if (data == root.data)
+    {
+      for(let i=0;i<=children.length - 1;i++)
+      {
+        // Create a new child Node for Root
+        //console.log("OK Data");
+        root.children[i] = new Node(children[i],[]);
+      }
+      return this.root;
+    }
+    else
+    {
 
-}; // End of function BinarySearchTree
+      // Look for which Child has same data number
+      for (let m=0;m<=root.children.length - 1;m++)
+      {
+        //console.log(root.children.length);
+        if (root.children[m].data == data)
+        {
+          //console.log(root.children[m].children.length);
+          for(let n=0;n<= children.length - 1;n++)
+          {
+            // Create a child node for this data
+            root.children[m].children[n] = new Node(children[n],[]);
+          }
+           //If the element to alter has been found return the new root
+          return this.root;
+        }
 
+
+      }
+    }
+
+      return this.root;
+  };
+
+
+  // SUBTREE AVG ---------------------------------------------------------------------------------------------------------
+  this.average = 0;
+  this.node = null;
+  // Start Node average calculation
+  this.nodeAverage = function(root){
+    let rootval = 0;
+    let childrenval = 0;
+    let averageval = 0;
+    if (root === null)
+      return;
+
+    rootval = root.data;
+    //console.log(rootval);
+
+    for (let i=0;i<=root.children.length - 1;i++)
+    {
+      childrenval += root.children[i].data;
+    }
+
+    averageval = (rootval+childrenval)/(root.children.length + 1);
+    //console.log(averageval);
+
+    if(this.average < averageval)
+    {
+      this.average = averageval;
+      this.node = rootval;
+      //console.log(this.node);
+    }
+
+    for (let j=0;j<=root.children.length - 1;j++)
+    {
+      this.nodeAverage(root.children[j]);
+    }
+
+    //return this.node;
+    return this.average;
+  }
+
+
+
+}; // End of function NarySearchTree
 
 function main(){
-    var tree = new BinarySearchTree();
-    var root = null;
+  var tree = new NarySearchTree();
+  var root = null;
 
-    root = tree.insert(root, 12);
-    console.log(root);
-    root = tree.insert(root, 10);
-    console.log(root);
-    root = tree.insert(root, 30);
-    console.log(root);
-    root = tree.insert(root, 25);
-    console.log(root);
-    root = tree.insert(root, 40);
-    console.log(root);
+  // N-ary tree 1
+  root = tree.insert(root, 12,[]);
+  root = tree.insert(root,12,[2,7,4]);
+  root = tree.insert(root, 2, [5,6,7,8]);
+  root = tree.insert(root, 7, [25,17]);
+  root = tree.insert(root,4, [9,10,12,15]);
+  console.log(JSON.stringify(root));
 
-    console.log(tree.nodeAverage(root));
+  // N-ary tree 2
+  //root = tree.insert(root, 1,[]);
+  //root = tree.insert(root,1,[-5,13,4]);
+  //root = tree.insert(root, -5, [1,2]);
+  //root = tree.insert(root, 13, [4,-2]);
+  //console.log(JSON.stringify(root));
+
+  //// N-ary tree 3
+  //root = tree.insert(root, 1,[]);
+  //root = tree.insert(root,1,[-5,21,5,-1]);
+  //console.log(JSON.stringify(root));
+
+  console.log(tree.nodeAverage(root));
 }
 
 // MAIN-------------------------------------------------------------------------------------------------------------
 
 main();
+
