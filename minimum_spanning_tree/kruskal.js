@@ -1,5 +1,7 @@
-//Now let us look at the implementation of Kruskal's algorithm using this data structure:
+// Source:
+// https://www.tutorialspoint.com/Kruskal-s-algorithm-in-Javascript
 
+//Now let us look at the implementation of Kruskal's algorithm using this data structure:
 kruskalsMST() {
    // Initialize graph that'll contain the MST
    const MST = new Graph();
