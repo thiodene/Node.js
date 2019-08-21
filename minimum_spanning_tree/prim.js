@@ -54,7 +54,7 @@ primsMST() {
    }
    return MST;
 }
-You can test this using:
+// You can test this using:
 
 let g = new Graph();
 g.addNode("A");
@@ -74,7 +74,7 @@ g.addEdge("D", "E", 8);
 g.addEdge("E", "F", 10);
 g.addEdge("B", "G", 9);
 g.primsMST().display();
-This will give the output:
+// This will give the output:
 
 A->B, D
 B->A, G
