@@ -119,19 +119,22 @@ function main()
   var newEdges = [[1,2,5],[1,3,10],[1,6,2],[5,6,5]];
   var connectedCost = 0;
   var mstCost = 0;
+  var miniCost = 0;
+  let j;
+
 
   // First Add nodes to a new Graph
   var g = new Graph();
   for(let i=1;i<=n;i++)
   {
     g.addNode(String(i));
-    connectedCost++;
+    //connectedCost++;
   }
 
   // Now add the currently connected Edges
   connectedEdges.forEach(function(element){
     g.addEdge(String(element[0]),String(element[1]));
-
+    connectedCost++;
   });
 
   // Now add the Edges to connecte for building an MST
@@ -141,11 +144,35 @@ function main()
   });
 
   g.display();
+  // Create the Kruskal MST Graph and save it
+  let gk = g.kruskalsMST();
 
-  console.log(g.kruskalsMST().totalCost);
+  //g.display();
+
+  //console.log(JSON.stringify(g.kruskalsMST()));
+  //console.log(g.nodes);
+  //console.log(g.edges[1]);
+
+  // Calculated the new connected cost after MST Kruskal
+  gk.nodes.forEach(function(element){
+    for(j=0;j<=gk.edges[element].length - 1;j++)
+    {
+      mstCost += gk.edges[element][j].weight;
+      console.log(gk.edges[element][j]);
+    }
+    //console.log(gk.edges[element]);
+    //mstCost += gk.edges[element].weight;
+  });
+
+  // Now calculate the minuimun cost for connecting additional edges:
+  // Divide the MST cost by 2 for an undirected GRAPH
+  miniCost = mstCost/2 - connectedCost;
+  //console.log(mstCost);
+  console.log(miniCost);
 
   //console.log(JSON.stringify(g.kruskalsMST()));
   //g.kruskalsMST().display();
+
 
 }
 
