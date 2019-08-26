@@ -147,12 +147,6 @@ function main()
   // Create the Kruskal MST Graph and save it
   let gk = g.kruskalsMST();
 
-  //g.display();
-
-  //console.log(JSON.stringify(g.kruskalsMST()));
-  //console.log(g.nodes);
-  //console.log(g.edges[1]);
-
   // Calculated the new connected cost after MST Kruskal
   gk.nodes.forEach(function(element){
     for(j=0;j<=gk.edges[element].length - 1;j++)
@@ -169,10 +163,6 @@ function main()
   miniCost = mstCost/2 - connectedCost;
   //console.log(mstCost);
   console.log(miniCost);
-
-  //console.log(JSON.stringify(g.kruskalsMST()));
-  //g.kruskalsMST().display();
-
 
 }
 
