@@ -108,34 +108,40 @@ class LinkedList
   // specified location
   removeFrom(index)
   {
-        if (index > 0 && index > this.size)
-                return -1;
-        else {
-                var curr, prev, it = 0;
-                curr = this.head;
-                prev = curr;
+    if (index > 0 && index > this.size)
+      return -1;
+    else
+    {
+      var curr, prev, it = 0;
+      curr = this.head;
+      prev = curr;
 
-                // deleting first element
-                if (index === 0) {
-                        this.head = curr.next;
-                } else {
-                        // iterate over the list to the
-                        // position to removce an element
-                        while (it < index) {
-                                it++;
-                                prev = curr;
-                                curr = curr.next;
-                        }
-
-                        // remove the element
-                        prev.next = curr.next;
-                }
-                this.size--;
-
-                // return the remove element
-                return curr.element;
+      // deleting first element
+      if (index === 0)
+      {
+        this.head = curr.next;
+      }
+      else
+      {
+        // iterate over the list to the
+        // position to removce an element
+        while (it < index)
+        {
+          it++;
+          prev = curr;
+          curr = curr.next;
         }
-}
+
+        // remove the element
+        prev.next = curr.next;
+      }
+      this.size--;
+
+      // return the remove element
+      return curr.element;
+    }
+  }
+
 
   // removeElement(element)
   // removes a given element from the
