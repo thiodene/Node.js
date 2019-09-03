@@ -19,3 +19,8 @@ sudo apt-get install nodejs
 node -v 
 # Response:
 v10.16.3
+
+# Now check NPM version too
+npm - v
+# Response:
+6.9.0
