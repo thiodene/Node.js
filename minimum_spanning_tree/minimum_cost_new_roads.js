@@ -1,3 +1,7 @@
+// Time Complexity: O(mlogm + mlogN). sort takes O(mlogm). find takes O(logN). 
+// With path compression and unino by weight, amatorize O(1).
+// Space: O(N).
+
 'use strict';
 
 const UnionFind = require('./union_find_class.js');
