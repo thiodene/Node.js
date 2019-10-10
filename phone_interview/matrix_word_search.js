@@ -154,6 +154,14 @@ function main()
 
 
   console.log(wordSearch(wordList,wordMatrix));
+  
+  // Time complexity: For 3 loops for/for/while it is O(n^3)
+  
+  // Better algorithm to improve time and space complexities: Trie algorithm, time complexities
+  // A trie is a data structure used for efficient retrieval of data associated with keys. 
+  // If key is of length n, then using trie worst case time complexity for searching the record associated with this key is O(n). 
+  // Insertion of (key, record) pair also takes O(n) time in worst case.
+
 
 }
 
