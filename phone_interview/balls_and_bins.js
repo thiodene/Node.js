@@ -42,6 +42,9 @@ function main()
 
 
   console.log(arrangeBalls(m,n));
+  
+  // Time complexity of this function:
+  // This function is being called recursively n times before reaching base case so its O(n), often called linear.
 
 }
 
