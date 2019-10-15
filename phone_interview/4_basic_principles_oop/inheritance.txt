@@ -1,0 +1,40 @@
+# Source:
+https://codeburst.io/javascript-inheritance-25fe61ab9f85
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
+
+# Definition:
+Inheritance in most class-based object-oriented languages is a mechanism in which one object acquires all the properties 
+and behaviors of another object. 
+JavaScript is not a class-based language although class keyword is introduced in ES2015, 
+it is just syntactical layer. 
+JavaScript still works on prototype chain.
+
+# Example:
+
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+
+//--------------------------- INHERITANCE
+class Teacher extends Person {
+  constructor(subject, grade) {
+    this.subject = subject;
+    this.grade = grade;
+  }
+}
