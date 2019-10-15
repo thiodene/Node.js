@@ -1,0 +1,18 @@
+# Source:
+https://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
+
+# Definition:
+Encapsulation refers to enclosing all the functionalities of an object within that object 
+so that the object’s internal workings (its methods and properties) are hidden from the rest of the application. 
+This allows us to abstract or localize specific set of functionalities on objects.
+
+We create objects with methods, properties, and attributes. 
+When we make them bundled inside an object it’s known as encapsulation. 
+When these methods and attributes are abstracted from other objects, this is known as abstraction.
+
+# Example:
+
+var prop1 = "one"; //private
+this.prop2= "two" //public
+var tc = new test();
+var tp1 =tc.prop1; //undefined: because prop1 is private;
