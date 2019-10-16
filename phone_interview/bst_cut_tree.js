@@ -17,4 +17,9 @@
       return [root,r[1]];
     }
 
+    // Time complexity for Recursive binary tree is
+    // O(2^n)
+    // Source: https://stackoverflow.com/questions/38013398/time-complexity-of-recursion-tree
+
   }
+
