@@ -1,6 +1,7 @@
 # Source:
 https://codeburst.io/javascript-inheritance-25fe61ab9f85
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
+https://medium.com/@viktor.kukurba/object-oriented-programming-in-javascript-2-inheritance-447368f57a26
 
 # Definition:
 Inheritance in most class-based object-oriented languages is a mechanism in which one object acquires all the properties 
