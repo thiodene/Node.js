@@ -1,5 +1,6 @@
 # Source:
 https://www.javatpoint.com/javascript-oops-polymorphism
+https://medium.com/@viktor.kukurba/object-oriented-programming-in-javascript-3-polymorphism-fb564c9f1ce8
 
 # Definition:
 The polymorphism is a core concept of an object-oriented paradigm that provides a way to perform a single action in different 
