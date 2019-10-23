@@ -1,5 +1,6 @@
 # Source:
 https://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
+https://medium.com/@viktor.kukurba/object-oriented-programming-in-javascript-4-encapsulation-4f9165cd26f9
 
 # Definition:
 Encapsulation refers to enclosing all the functionalities of an object within that object 
